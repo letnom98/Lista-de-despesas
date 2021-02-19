@@ -26,7 +26,7 @@
                 <button class="btn btn-primary text-white" @click="openEditingMenu();editing=true"><span v-if="window.width > 600">Editar </span> <i class="fas fa-pen"></i></button>
             </div>
             <div class="col mt-2 mb-2">
-                <button class="btn btn-danger text-white" @click="removeItem()"><span v-if="window.width > 600">Deletar </span><i class="fas fa-trash"></i></button>
+                <button class="btn btn-danger text-white" @click="showDeleteConfirmModal=true"><span v-if="window.width > 600">Deletar </span><i class="fas fa-trash"></i></button>
             </div>
         </div>
       </div>
@@ -80,12 +80,17 @@
             </div>
       </div>
   </div>
+  <DeleteConfirmModal v-if="showDeleteConfirmModal" @close="showDeleteConfirmModal=false" @delete="showDeleteConfirmModal=false;removeItem()"></DeleteConfirmModal>
 </div>
 </template>
 
 <script>
+import DeleteConfirmModal from './deleteConfirmModal'
 export default {
     props:['bill'],
+    components:{
+        DeleteConfirmModal
+    },
     data(){
         return{
             today:'',
@@ -98,6 +103,7 @@ export default {
                 description:'',
                 paid:false
             },
+            showDeleteConfirmModal:false,
             window:{
                 width:0,
                 height:0

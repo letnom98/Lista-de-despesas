@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import AddItem from './addItem'
+// import AddItem from './addItem'
 export default {
-    components:{
-        AddItem
-    }
+    // components:{
+    //     AddItem
+    // }
 }
 </script>
 

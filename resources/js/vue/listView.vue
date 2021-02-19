@@ -1,5 +1,6 @@
 <template>
     <div class="container list">
+        <router-view @reload="hasQuery()"></router-view>
         <div class="row align-items-center">
             <div class="col-9">
                 <h1>Despesas</h1>
